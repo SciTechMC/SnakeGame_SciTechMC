@@ -1,7 +1,7 @@
 #variables besoin pour score board:
 #playerName
-#playTimeStop
-#score
+#playTime1
+#score1
 
 import pygame
 import time
@@ -33,8 +33,6 @@ apple.y=random.randint(30,HEIGHT-30)
 #other
 playerName = str(input("Le nom du joueur: "))
 
-time.sleep(5)
-
 direction = "U"
 
 score = 0
@@ -47,7 +45,7 @@ appleTot = 0
 
 shipSpeedP = 5
 
-minSpeedP = 0
+rminSpeedP = 0
 
 playTime = 0
 
@@ -67,7 +65,11 @@ playTimeStop = 0
 
 gameTime = 0
 
-tauxDeJeux = 3
+tauxDeJeux = 4
+
+playTime1 = 0
+
+score1 = 0
 #Rest of code -----------------
     
 def draw():
@@ -86,6 +88,12 @@ def draw():
     global pause
     global gameOver
     global gameTime
+    global score1
+    global playTime1
+    
+    if tauxDeJeux <= 0:
+        #code du prof pour envoyer les données ------------------------------------------------------------------------------------------
+        gameEndFunt()
     
     if pause == False or gameOver == False:
     
@@ -102,6 +110,8 @@ def draw():
             apple.draw()
             speedDraw()
             tauxDeJeuxfont()
+            
+            
             
             if ship.x >= 800:
                 gameOver = True
@@ -122,11 +132,14 @@ def draw():
             if scoreWin == True:
                 screen.clear()
                 screen.draw.text('You Won!')
-
+            
+        
         else:
             screen.clear()
             drawGame()
             playTimeStop = playTime
+            
+                
             
             if restart == True:
                 
@@ -138,13 +151,25 @@ def draw():
                 restart = False
                 ship.x = 400
                 ship.y = 300
+                if tauxDeJeux == 3:
+                    score1 = score
+                if tauxDeJeux == 2 and score > score1:
+                    score1 = score
+                if tauxDeJeux == 1 and score > score1:
+                    score1 = score
+                    
+                if tauxDeJeux == 3:
+                    playTime1 = playTime
+                if tauxDeJeux == 2 and playTime > playTime1:
+                    playTime1 = playTime
+                if tauxDeJeux == 1 and playTime > playTime1:
+                    playTime1 = playTime
+                    
                 score = 0
                 shipSpeed = 5
                 minSpeed = -1
                 playTime = 0
                 tauxDeJeux -= 1
-                if tauxDeJeux <= -1:
-                    pygame.quit()
                 if score >= 1000000000:
                     score = 999999999
                 
@@ -283,6 +308,18 @@ def on_key_down(key):
             else:
                 minSpeed = minSpeedP
                 shipSpeed = shipSpeedP
+    
+    
+def gameEndFunt():
+    global score
+    global score1
+    global playTime1
+    global playTime
+    screen.draw.text("Score Final: " + str(score1), (275, 275), color="green")
+    print("Score Final: " + str(score1))
+    print("Meilleur Temp: " + str(playTime1))
+    time.sleep(5)
+    pygame.quit()
 
 def tauxDeJeuxfont():
     global tauxDeJeux
@@ -353,5 +390,4 @@ def minSpeedChange():
     elif playTime == 150:
         minSpeed = 16
     
-    
-    
+#Owner: Jan Van de Casteele
