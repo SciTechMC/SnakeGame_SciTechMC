@@ -1,0 +1,18 @@
+Controler le jeux:
+
+Flèches: mouvement
+
+R: Recommencer
+
+À partir des premières 20 secondes de jeux, la vitesse de la fusée augmente chaque 10 secondes, après 150 secondes de jeux, elle n'accélère plus.
+
+La vitesse de base est de 5
+Chaque planète récupérée vaudra 1
+
+Si la vitesse est 10 chaque planete recupérée vaudra 2
+Si la vitesse est 15 chaque planete recupérée vaudra 4
+
+Quand le jeux commence, vous devrez inserer votre nom.
+Après avoir fait ceci, attander 5 seconde pour que le jeux se demare. Vous aurez ainsi 4 jeux(vies), si vous n'avez plus de vies le jeux se terminera.
+
+
