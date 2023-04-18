@@ -211,11 +211,11 @@ def update(dt):
             
             if shipSpeed == -1:
                 score += 2
-            elif shipSpeed <= 5:
+            elif shipSpeed >= 5:
                 score += 1
-            elif shipSpeed <= 10:
+            elif shipSpeed >= 10:
                 score += 2
-            elif shipSpeed <= 15:
+            elif shipSpeed = 15:
                 score += 4
             else:
                 score += 1
