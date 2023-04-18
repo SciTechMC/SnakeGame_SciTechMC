@@ -14,7 +14,7 @@ HEIGHT = 600
 
 import random
 #background
-background = pygame.image.load('.\images\space-bg.jpg')
+background = pygame.image.load('.\\images\\anebula.jpg')
 
 
 #player
@@ -23,7 +23,7 @@ ship.x=400
 ship.y=300
 
 #apple
-apple=Actor('apple.png')
+apple=Actor('mercurius.png')
 apple.width = 64
 apple.height = 64
 
