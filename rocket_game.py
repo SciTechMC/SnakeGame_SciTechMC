@@ -1,5 +1,4 @@
 #variables besoin pour score board:
-#playerName
 #playTime1
 #score1
 
@@ -33,7 +32,6 @@ apple.y=random.randint(30,HEIGHT-30)
 
 
 #other
-playerName = str(input("Le nom du joueur: "))
 
 direction = "U"
 
@@ -55,7 +53,7 @@ winStatus = False
 
 minSpeed = -1
 
-gameOver = False
+gameOver = True
 
 restart = False
 
@@ -246,8 +244,6 @@ def update(dt):
                 
         if shipSpeed <= -2:
             shipSpeed = -1
-        elif shipSpeed >= 16:
-            shipSpeed = 15
     
     if gameOver != True or pause != True:
         gameTime = timer
@@ -266,6 +262,7 @@ def on_key_down(key):
     global gameOver
     global playTimeStop
     global tauxDeJeux
+    global playTime
     
     if pause == False or gameOver == False:
         
@@ -309,15 +306,18 @@ def on_key_down(key):
         elif (key == keys.R):
             if gameOver == True:
                 restart = True
+        elif (key == keys.F8):
+            shipSpeed = 999999999
             
         elif (key == keys.F9):
             score = 999999999
+            playTime = 999999999
         
         elif (key == keys.F10):
             tauxDeJeux = 3
             
-        elif (key == keys.F11):
-            tauxDeJeux = 999999999
+        elif (key == keys.F12):
+            tauxDeJeux = 9999999
             
         elif (key == keys.P):
             pause = not pause
@@ -353,6 +353,7 @@ def tauxDeJeuxfont():
     if tauxDeJeux == 0:
         screen.draw.text('Jeux restants: ' + str(tauxDeJeux),(30, 580), color="red")
 def drawGame():
+    tauxDeJeuxfont()
     global minSpeed
     global score
     global playTimeStop
